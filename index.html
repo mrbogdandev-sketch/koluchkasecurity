@@ -24,6 +24,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            min-height: 100vh;
         }
         
         h1, h2, h3 {
@@ -78,12 +79,19 @@
             margin-right: 15px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .logo-img:hover {
+            transform: rotate(10deg) scale(1.1);
+            background: rgba(255, 255, 255, 0.15);
         }
         
         .logo-img img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            filter: brightness(0) invert(1);
         }
         
         .logo h1 {
@@ -456,6 +464,7 @@
         .koluchka-logo img {
             max-width: 100%;
             max-height: 100%;
+            filter: brightness(0) invert(1);
         }
         
         .partnership-plus {
@@ -686,6 +695,7 @@
         
         .footer-logo img {
             height: 60px;
+            filter: brightness(0) invert(1);
         }
         
         .footer-text {
@@ -773,23 +783,46 @@
         /* Notification */
         .notification {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 15px 20px;
-            color: #fff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: rgba(255, 215, 0, 0.9);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px 60px;
+            color: #000;
+            font-size: 48px;
+            font-weight: bold;
             z-index: 10000;
             opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            text-align: center;
         }
         
         .notification.show {
             opacity: 1;
-            transform: translateX(0);
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .notification:after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #ff0, #f90, #ff0);
+            border-radius: 25px;
+            z-index: -1;
+            animation: borderGlow 2s linear infinite;
+        }
+        
+        @keyframes borderGlow {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
         }
         
         /* Responsive */
@@ -836,6 +869,11 @@
                 width: 250px;
                 height: 250px;
             }
+            
+            .notification {
+                padding: 30px 40px;
+                font-size: 36px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -876,6 +914,11 @@
                 padding: 18px 40px;
                 font-size: 20px;
             }
+            
+            .notification {
+                padding: 20px 30px;
+                font-size: 28px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -900,6 +943,11 @@
                 width: 200px;
                 height: 200px;
             }
+            
+            .notification {
+                padding: 15px 25px;
+                font-size: 24px;
+            }
         }
     </style>
 </head>
@@ -911,7 +959,7 @@
         <div class="bg-element element-4"></div>
     </div>
     
-    <div id="notification" class="notification">Обед</div>
+    <div id="notification" class="notification">ОБЕД</div>
     
     <header id="header">
         <div class="container">
@@ -1096,7 +1144,6 @@
         document.getElementById('contact-btn').addEventListener('click', function(e) {
             e.preventDefault();
             const notification = document.getElementById('notification');
-            notification.textContent = 'Обед';
             notification.classList.add('show');
             
             setTimeout(() => {
