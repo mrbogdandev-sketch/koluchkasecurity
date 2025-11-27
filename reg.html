@@ -12,448 +12,280 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-bg: #000000;
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --accent-color: #ffffff;
-            --success-color: #00ff88;
-            --warning-color: #ffaa00;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
         body {
-            background: var(--primary-bg);
-            color: var(--accent-color);
+            background: #000;
+            color: #fff;
             font-family: 'Segoe UI', system-ui, sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%);
         }
 
         .activation-container {
             width: 100%;
-            max-width: 480px;
+            max-width: 400px;
         }
 
         .activation-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(40px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 48px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
             text-align: center;
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .activation-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        .activation-card.success {
+            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
         }
 
-        .logo-section {
-            margin-bottom: 32px;
+        .activation-card.shake {
+            animation: shake 0.5s ease;
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 16px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
         }
 
-        .logo::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: var(--gradient);
-            border-radius: 22px;
-            z-index: -1;
-            opacity: 0.3;
-        }
-
         .logo img {
-            width: 50px;
-            height: 50px;
+            width: 35px;
+            height: 35px;
             filter: brightness(0) invert(1);
         }
 
         .title {
-            font-size: 32px;
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #fff 0%, #a8b1ff 100%);
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #a8b1ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
-            font-size: 16px;
-            opacity: 0.8;
-            margin-bottom: 32px;
-            line-height: 1.5;
-        }
-
-        /* Progress Steps */
-        .progress-steps {
-            display: flex;
-            justify-content: space-between;
-            margin: 40px 0;
-            position: relative;
-        }
-
-        .progress-steps::before {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            right: 20px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 1;
-        }
-
-        .progress-bar {
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            height: 2px;
-            background: var(--success-color);
-            transition: all 0.5s ease;
-            z-index: 2;
-        }
-
-        .step {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 14px;
-            font-weight: 600;
-            position: relative;
-            z-index: 3;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .step.active {
-            background: var(--success-color);
-            color: #000;
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
-        }
-
-        .step.completed {
-            background: var(--success-color);
-            color: #000;
-        }
-
-        .step-label {
-            position: absolute;
-            top: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0.7;
-        }
-
-        /* Forms */
-        .form-section {
-            margin: 32px 0;
+            opacity: 0.8;
+            margin-bottom: 30px;
+            line-height: 1.4;
         }
 
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             text-align: left;
         }
 
         .form-label {
             display: block;
             margin-bottom: 8px;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 600;
             opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .form-input {
             width: 100%;
-            padding: 16px 20px;
+            padding: 12px 16px;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            color: var(--accent-color);
-            font-size: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
             transition: all 0.3s ease;
         }
 
         .form-input:focus {
             outline: none;
-            border-color: rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
             background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .form-input.shake {
+            animation: shake 0.5s ease;
+            border-color: #ff6b6b;
         }
 
         .google-auth-btn {
             width: 100%;
-            padding: 16px 24px;
+            padding: 14px 20px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            color: var(--accent-color);
-            font-size: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            margin-top: 8px;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .google-auth-btn:hover {
             background: rgba(255, 255, 255, 0.12);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .google-auth-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Activation Code */
-        .code-section {
-            margin: 32px 0;
-        }
-
-        .code-display {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 24px;
-            margin: 24px 0;
-            position: relative;
-        }
-
-        .code-label {
-            font-size: 14px;
-            opacity: 0.8;
-            margin-bottom: 12px;
         }
 
         .activation-code {
-            font-size: 28px;
+            font-size: 18px;
             font-weight: 700;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, #fff 0%, #a8b1ff 100%);
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #fff, #a8b1ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            padding: 16px;
+            padding: 15px;
+            margin: 20px 0;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
-            user-select: all;
-            position: relative;
-            overflow: hidden;
         }
 
-        .activation-code::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .activation-code:hover::before {
-            left: 100%;
+        .activation-code:hover {
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .activation-code.copied {
-            background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            border-color: rgba(0, 255, 136, 0.3);
+            animation: pulse 0.6s ease;
+            border-color: #00ff88;
         }
 
-        .copy-hint {
-            font-size: 12px;
-            opacity: 0.6;
-            margin-top: 8px;
-        }
-
-        /* Buttons */
         .btn {
-            padding: 16px 32px;
+            padding: 12px 24px;
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            color: var(--accent-color);
-            font-size: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            color: #fff;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            margin: 8px;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
         }
 
         .btn-primary {
-            background: var(--gradient);
+            background: linear-gradient(45deg, #667eea, #764ba2);
             border: none;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--glass-border);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-2px);
-        }
-
-        /* Success State */
-        .success-state {
-            text-align: center;
-            padding: 20px 0;
+        .btn-download {
+            background: linear-gradient(45deg, #00ff88, #00cc66);
+            border: none;
         }
 
         .success-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--success-color);
+            width: 60px;
+            height: 60px;
+            background: #00ff88;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 32px;
+            margin: 0 auto 20px;
+            font-size: 24px;
             color: #000;
             animation: bounceIn 0.6s ease;
         }
 
         .success-message {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--success-color);
+            margin-bottom: 10px;
+            color: #00ff88;
         }
 
-        /* Utility Classes */
         .hidden {
             display: none !important;
         }
 
-        .fade-in {
-            animation: fadeIn 0.5s ease;
-        }
-
-        .shake {
-            animation: shake 0.5s ease;
-        }
-
-        /* Notifications */
         .notification {
             position: fixed;
-            top: 24px;
-            right: 24px;
-            background: var(--success-color);
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 255, 136, 0.9);
             color: #000;
-            padding: 16px 24px;
-            border-radius: 12px;
+            padding: 12px 20px;
+            border-radius: 10px;
             font-weight: 600;
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
             transform: translateX(400px);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 1000;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 14px;
         }
 
         .notification.show {
             transform: translateX(0);
         }
 
+        .download-info {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        .download-info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .download-info-label {
+            opacity: 0.7;
+        }
+
+        .download-info-value {
+            font-weight: 600;
+        }
+
         /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes bounceIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.05); }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-5px); }
             75% { transform: translateX(5px); }
         }
 
-        /* Responsive */
-        @media (max-width: 480px) {
-            .activation-card {
-                padding: 32px 24px;
-            }
-            
-            .title {
-                font-size: 28px;
-            }
-            
-            .activation-code {
-                font-size: 24px;
-                letter-spacing: 2px;
-            }
-            
-            .progress-steps::before {
-                left: 15px;
-                right: 15px;
-            }
-            
-            .progress-bar {
-                left: 15px;
-            }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 5px rgba(0, 255, 136, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.6); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
@@ -464,37 +296,20 @@
     </div>
 
     <div class="activation-container">
-        <div class="activation-card">
+        <div class="activation-card" id="activationCard">
             <!-- Logo Section -->
             <div class="logo-section">
                 <div class="logo">
-                    <img src="logo.png" alt="Koluchka" onerror="this.style.display='none'">
+                    <img src="logo.png" alt="Koluchka">
                 </div>
                 <h1 class="title">Активация Koluchka</h1>
-                <p class="subtitle">Получите ключ активации для полной защиты вашего устройства</p>
-            </div>
-
-            <!-- Progress Steps -->
-            <div class="progress-steps">
-                <div class="progress-bar" id="progressBar" style="width: 0%"></div>
-                <div class="step active" id="step1">
-                    <span>1</span>
-                    <div class="step-label">Регистрация</div>
-                </div>
-                <div class="step" id="step2">
-                    <span>2</span>
-                    <div class="step-label">Подтверждение</div>
-                </div>
-                <div class="step" id="step3">
-                    <span>3</span>
-                    <div class="step-label">Ключ</div>
-                </div>
+                <p class="subtitle">Получите ключ для полной защиты устройства</p>
             </div>
 
             <!-- Step 1: Registration -->
-            <div class="form-section fade-in" id="registrationStep">
+            <div class="form-section" id="registrationStep">
                 <div class="form-group">
-                    <label class="form-label" for="userEmail">Электронная почта</label>
+                    <label class="form-label" for="userEmail">Email</label>
                     <input type="email" id="userEmail" class="form-input" placeholder="your.email@example.com">
                 </div>
                 
@@ -507,21 +322,33 @@
                     <i class="fab fa-google"></i>
                     Продолжить с Google
                 </button>
-
-                <p style="font-size: 12px; opacity: 0.6; margin-top: 16px;">
-                    Нажимая "Продолжить", вы соглашаетесь с условиями использования
-                </p>
             </div>
 
-            <!-- Step 2: Processing -->
-            <div class="form-section hidden" id="processingStep">
-                <div class="success-state">
+            <!-- Step 2: Success -->
+            <div class="form-section hidden" id="successStep">
+                <div style="text-align: center; padding: 10px 0;">
                     <div class="success-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="success-message">Регистрация завершена!</div>
-                    <p>Ваш аккаунт успешно создан. Генерируем ключ активации...</p>
-                    <button class="btn btn-primary" onclick="generateActivationCode()" style="margin-top: 24px;">
+                    <div class="success-message">Успешная регистрация!</div>
+                    <p style="margin-bottom: 20px; font-size: 14px;">Файл скачивается автоматически</p>
+                    
+                    <div class="download-info">
+                        <div class="download-info-item">
+                            <span class="download-info-label">Файл:</span>
+                            <span class="download-info-value">klchantivirus.zip</span>
+                        </div>
+                        <div class="download-info-item">
+                            <span class="download-info-label">Размер:</span>
+                            <span class="download-info-value">85 МБ</span>
+                        </div>
+                        <div class="download-info-item">
+                            <span class="download-info-label">Версия:</span>
+                            <span class="download-info-value">2.5.1</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="showActivationCode()" style="margin-top: 15px;">
                         <i class="fas fa-key"></i>
                         Получить ключ активации
                     </button>
@@ -530,29 +357,26 @@
 
             <!-- Step 3: Activation Code -->
             <div class="form-section hidden" id="activationStep">
-                <div class="code-section">
-                    <div class="code-display">
-                        <div class="code-label">Ваш ключ активации Koluchka</div>
-                        <div class="activation-code" id="activationCode" onclick="copyActivationCode()">
-                            KLC-XXXX-XXXX-XXXX
-                        </div>
-                        <div class="copy-hint">Нажмите на код чтобы скопировать</div>
+                <div style="text-align: center;">
+                    <div style="font-size: 12px; opacity: 0.8; margin-bottom: 10px;">Ваш ключ активации</div>
+                    <div class="activation-code" id="activationCode" onclick="copyActivationCode()">
+                        KLC-XXXX-XXXX-XXXX
                     </div>
+                    <div style="font-size: 10px; opacity: 0.6; margin-bottom: 20px;">Нажмите чтобы скопировать</div>
 
-                    <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 24px;">
+                    <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 20px;">
                         <button class="btn btn-primary" onclick="copyActivationCode()">
                             <i class="fas fa-copy"></i>
                             Скопировать ключ
                         </button>
-                        <button class="btn btn-secondary" onclick="returnToMainSite()">
+                        <button class="btn" onclick="returnToMainSite()">
                             <i class="fas fa-arrow-left"></i>
-                            Вернуться на сайт
+                            На главную
                         </button>
                     </div>
 
-                    <div class="codes-info" style="font-size: 12px; opacity: 0.6; margin-top: 24px;">
-                        <i class="fas fa-info-circle"></i>
-                        Ключ действителен для 1 устройства • Всего ключей: 5 • Использовано: <span id="usedKeysCount">0</span>
+                    <div style="font-size: 10px; opacity: 0.5; margin-top: 20px;">
+                        Ключей использовано: <span id="usedKeysCount">0</span>/5
                     </div>
                 </div>
             </div>
@@ -570,89 +394,78 @@
         ];
 
         let usedKeys = 0;
-        let currentStep = 1;
         let currentActivationCode = "";
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            updateProgressBar();
-        });
-
-        function updateProgressBar() {
-            const progress = ((currentStep - 1) / 2) * 100;
-            document.getElementById('progressBar').style.width = `${progress}%`;
+        function shakeElement(element) {
+            element.classList.add('shake');
+            setTimeout(() => element.classList.remove('shake'), 500);
         }
 
         function startRegistration() {
             const email = document.getElementById('userEmail').value;
             const password = document.getElementById('userPassword').value;
+            const card = document.getElementById('activationCard');
 
             if (!email || !password) {
                 showNotification('Заполните все поля', 'warning');
-                document.getElementById('userEmail').classList.add('shake');
-                document.getElementById('userPassword').classList.add('shake');
-                setTimeout(() => {
-                    document.getElementById('userEmail').classList.remove('shake');
-                    document.getElementById('userPassword').classList.remove('shake');
-                }, 500);
+                shakeElement(card);
+                if (!email) shakeElement(document.getElementById('userEmail'));
+                if (!password) shakeElement(document.getElementById('userPassword'));
                 return;
             }
 
-            // Simulate registration process
-            showNotification('Регистрация через Google...', 'info');
+            showNotification('Регистрация...', 'info');
             
             setTimeout(() => {
-                // Move to step 2
-                document.getElementById('registrationStep').classList.add('hidden');
-                document.getElementById('processingStep').classList.remove('hidden');
-                document.getElementById('processingStep').classList.add('fade-in');
+                // Скачивание файла автоматически
+                downloadFile();
                 
-                // Update steps
-                document.getElementById('step1').classList.remove('active');
-                document.getElementById('step1').classList.add('completed');
-                document.getElementById('step2').classList.add('active');
-                
-                currentStep = 2;
-                updateProgressBar();
-                
-                showNotification('Регистрация успешно завершена!', 'success');
-            }, 2000);
+                // Переход к следующему шагу с анимацией
+                shakeElement(card);
+                setTimeout(() => {
+                    document.getElementById('registrationStep').classList.add('hidden');
+                    document.getElementById('successStep').classList.remove('hidden');
+                    card.classList.add('success');
+                    showNotification('Файл скачан!', 'success');
+                }, 300);
+            }, 1500);
         }
 
-        function generateActivationCode() {
+        function downloadFile() {
+            const link = document.createElement('a');
+            link.href = 'klchantivirus.zip';
+            link.download = 'klchantivirus.zip';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function showActivationCode() {
+            const card = document.getElementById('activationCard');
+            
             if (usedKeys >= activationKeys.length) {
-                showNotification('Все ключи активации были использованы!', 'warning');
+                showNotification('Все ключи использованы!', 'warning');
+                shakeElement(card);
                 return;
             }
 
-            // Get next available key
             currentActivationCode = activationKeys[usedKeys];
             usedKeys++;
 
-            // Update UI
-            document.getElementById('activationCode').textContent = currentActivationCode;
-            document.getElementById('usedKeysCount').textContent = usedKeys;
-            
-            // Move to step 3
-            document.getElementById('processingStep').classList.add('hidden');
-            document.getElementById('activationStep').classList.remove('hidden');
-            document.getElementById('activationStep').classList.add('fade-in');
-            
-            // Update steps
-            document.getElementById('step2').classList.remove('active');
-            document.getElementById('step2').classList.add('completed');
-            document.getElementById('step3').classList.add('active');
-            
-            currentStep = 3;
-            updateProgressBar();
-            
-            showNotification('Ключ активации сгенерирован!', 'success');
+            // Анимация перехода
+            shakeElement(card);
+            setTimeout(() => {
+                document.getElementById('successStep').classList.add('hidden');
+                document.getElementById('activationStep').classList.remove('hidden');
+                document.getElementById('activationCode').textContent = currentActivationCode;
+                document.getElementById('usedKeysCount').textContent = usedKeys;
+                showNotification('Ключ готов!', 'success');
+            }, 300);
         }
 
         function copyActivationCode() {
             if (!currentActivationCode) return;
 
-            // Modern clipboard API
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(currentActivationCode).then(() => {
                     showCopySuccess();
@@ -677,7 +490,7 @@
                 document.execCommand('copy');
                 showCopySuccess();
             } catch (err) {
-                showNotification('Не удалось скопировать код', 'warning');
+                showNotification('Ошибка копирования', 'warning');
             }
             
             document.body.removeChild(textArea);
@@ -686,12 +499,8 @@
         function showCopySuccess() {
             const codeElement = document.getElementById('activationCode');
             codeElement.classList.add('copied');
-            
-            showNotification('Код скопирован в буфер обмена!', 'success');
-            
-            setTimeout(() => {
-                codeElement.classList.remove('copied');
-            }, 2000);
+            showNotification('Код скопирован!', 'success');
+            setTimeout(() => codeElement.classList.remove('copied'), 2000);
         }
 
         function showNotification(message, type = 'success') {
@@ -699,41 +508,23 @@
             const notificationText = document.getElementById('notificationText');
             
             notificationText.textContent = message;
-            
-            // Reset styles
-            notification.style.background = '';
-            notification.style.color = '';
-            
-            if (type === 'success') {
-                notification.style.background = 'var(--success-color)';
-                notification.style.color = '#000';
-            } else if (type === 'warning') {
-                notification.style.background = 'var(--warning-color)';
-                notification.style.color = '#000';
-            } else {
-                notification.style.background = 'rgba(255, 255, 255, 0.9)';
-                notification.style.color = '#000';
-            }
+            notification.style.background = type === 'success' ? 'rgba(0, 255, 136, 0.9)' : 
+                                          type === 'warning' ? 'rgba(255, 170, 0, 0.9)' : 
+                                          'rgba(255, 255, 255, 0.9)';
+            notification.style.color = type === 'info' ? '#000' : '#000';
             
             notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
+            setTimeout(() => notification.classList.remove('show'), 3000);
         }
 
         function returnToMainSite() {
-            showNotification('Возвращаемся на главный сайт...', 'info');
-            
-            setTimeout(() => {
-                // Redirect to main site
-                window.location.href = 'index.html';
-            }, 1500);
+            showNotification('Возвращаемся...', 'info');
+            setTimeout(() => window.location.href = 'index.html', 1000);
         }
 
-        // Enter key support for form
+        // Enter key support
         document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && currentStep === 1) {
+            if (e.key === 'Enter') {
                 startRegistration();
             }
         });
