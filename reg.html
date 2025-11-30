@@ -30,7 +30,6 @@
 
         .activation-card {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 40px 30px;
@@ -41,8 +40,8 @@
         }
 
         .activation-card.success {
-            border-color: rgba(0, 255, 136, 0.3);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
         }
 
         .activation-card.shake {
@@ -53,12 +52,13 @@
             width: 60px;
             height: 60px;
             margin: 0 auto 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: #000;
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .logo img {
@@ -71,9 +71,7 @@
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 10px;
-            background: linear-gradient(45deg, #fff, #a8b1ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #fff;
         }
 
         .subtitle {
@@ -113,19 +111,18 @@
             outline: none;
             border-color: rgba(255, 255, 255, 0.3);
             background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
         .form-input.shake {
             animation: shake 0.5s ease;
-            border-color: #ff6b6b;
+            border-color: #fff;
         }
 
         .google-auth-btn {
             width: 100%;
             padding: 14px 20px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
             color: #fff;
             font-size: 14px;
@@ -140,7 +137,7 @@
         }
 
         .google-auth-btn:hover {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.15);
             transform: translateY(-2px);
         }
 
@@ -148,30 +145,30 @@
             font-size: 18px;
             font-weight: 700;
             letter-spacing: 2px;
-            background: linear-gradient(45deg, #fff, #a8b1ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #fff;
             padding: 15px;
             margin: 20px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .activation-code:hover {
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .activation-code.copied {
             animation: pulse 0.6s ease;
-            border-color: #00ff88;
+            border-color: #fff;
         }
 
         .btn {
             padding: 12px 24px;
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 25px;
             color: #fff;
             font-size: 14px;
@@ -190,19 +187,19 @@
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
             border: none;
         }
 
-        .btn-download {
-            background: linear-gradient(45deg, #00ff88, #00cc66);
-            border: none;
+        .btn-primary:hover {
+            background: rgba(255, 255, 255, 1);
         }
 
         .success-icon {
             width: 60px;
             height: 60px;
-            background: #00ff88;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -217,7 +214,7 @@
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 10px;
-            color: #00ff88;
+            color: #fff;
         }
 
         .hidden {
@@ -228,7 +225,7 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            background: rgba(0, 255, 136, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             color: #000;
             padding: 12px 20px;
             border-radius: 10px;
@@ -240,6 +237,7 @@
             align-items: center;
             gap: 8px;
             font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .notification.show {
@@ -278,8 +276,8 @@
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 5px rgba(0, 255, 136, 0.3); }
-            50% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.6); }
+            0%, 100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
         }
 
         @keyframes bounceIn {
@@ -374,10 +372,6 @@
                             На главную
                         </button>
                     </div>
-
-                    <div style="font-size: 10px; opacity: 0.5; margin-top: 20px;">
-                        Ключей использовано: <span id="usedKeysCount">0</span>/5
-                    </div>
                 </div>
             </div>
         </div>
@@ -390,7 +384,12 @@
             "KLC-A5E9-2B47-1F8C", 
             "KLC-3D8F-6A21-9E4B",
             "KLC-1C7E-5D93-2A8F",
-            "KLC-9B4F-2E81-7C3A"
+            "KLC-9B4F-2E81-7C3A",
+            "KLC-8D2A-7F4C-1B9E",
+            "KLC-5E1C-9A3F-8B2D",
+            "KLC-2F8B-4D1E-9C7A",
+            "KLC-6C9A-3E2B-1F8D",
+            "KLC-4B7D-1F9A-2E6C"
         ];
 
         let usedKeys = 0;
@@ -458,7 +457,6 @@
                 document.getElementById('successStep').classList.add('hidden');
                 document.getElementById('activationStep').classList.remove('hidden');
                 document.getElementById('activationCode').textContent = currentActivationCode;
-                document.getElementById('usedKeysCount').textContent = usedKeys;
                 showNotification('Ключ готов!', 'success');
             }, 300);
         }
@@ -508,10 +506,8 @@
             const notificationText = document.getElementById('notificationText');
             
             notificationText.textContent = message;
-            notification.style.background = type === 'success' ? 'rgba(0, 255, 136, 0.9)' : 
-                                          type === 'warning' ? 'rgba(255, 170, 0, 0.9)' : 
-                                          'rgba(255, 255, 255, 0.9)';
-            notification.style.color = type === 'info' ? '#000' : '#000';
+            notification.style.background = 'rgba(255, 255, 255, 0.95)';
+            notification.style.color = '#000';
             
             notification.classList.add('show');
             setTimeout(() => notification.classList.remove('show'), 3000);
